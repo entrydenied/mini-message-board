@@ -47,4 +47,15 @@ router.get('/new', function(req, res, next) {
   res.render('form', { title: 'New Message' });
 });
 
+// POST route to submit a new message
+router.post('/new', function(req, res, next) {
+  const message = {
+    user: req.body.name,
+    text: req.body.message,
+    added: new Date()
+  };
+  messages.push(message);
+  res.redirect('/');
+});
+
 module.exports = router;
