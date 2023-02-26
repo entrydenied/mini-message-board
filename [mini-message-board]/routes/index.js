@@ -49,13 +49,11 @@ router.get('/new', function(req, res, next) {
 
 // POST route to submit a new message
 router.post('/new', function(req, res, next) {
-  const message = {
-    user: req.body.name,
-    text: req.body.message,
-    added: new Date()
-  };
-  messages.push(message);
+  const messageText = req.body.messageText;
+  const messageUser = req.body.messageUser;
+  messages.push({text: messageText, user: messageUser, added: new Date()});
   res.redirect('/');
 });
+
 
 module.exports = router;
